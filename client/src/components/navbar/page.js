@@ -16,7 +16,7 @@ const NavBar=()=> {
   ];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar onMenuOpenChange={setIsMenuOpen} className="flex justify-between py-7 px-3" >
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -28,18 +28,18 @@ const NavBar=()=> {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent  className=" hidden sm:flex gap-4" justify="center">
-        <NavbarItem className="hover:bg-gray-400  rounded  ">
+      <NavbarContent  className=" hidden sm:flex gap-4 " >
+        <NavbarItem className="hover:bg-gray-400  rounded-lg px-5 py-4  ">
           <Link color="foreground" href="#">
             Features
           </Link>
         </NavbarItem>
-        <NavbarItem  className="hover:bg-gray-400  rounded  ">
+        <NavbarItem  className="hover:bg-gray-400  rounded-lg px-5 py-4  ">
           <Link color="foreground" href="#" aria-current="page">
             Customers
           </Link>
         </NavbarItem>
-        <NavbarItem className="hover:bg-gray-400  rounded  ">
+        <NavbarItem className="hover:bg-gray-400  rounded-lg px-5 py-4 ">
           <Link color="foreground" href="#">
             Integrations
           </Link>
@@ -47,11 +47,11 @@ const NavBar=()=> {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem  >
-        <Link href="/login"><Button color="primary" href="#" variant="flat" > 
+        <Link href="/login"><Button  color="primary" href="#" variant="flat" > 
        <b> <i>LogIn</i></b>
         </Button> </Link>
         </NavbarItem>
-        <NavbarItem>
+        <NavbarItem >
         <Link  href="/register"> <Button color="primary" href="#" variant="flat">
            <b><i> Sign Up </i></b>
           </Button> </Link>

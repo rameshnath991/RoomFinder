@@ -4,10 +4,13 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <div>
+    <div >
       <NavBar/>
-      Home page.
+      <div>
 
+
+
+      </div>
     </div>
   )
 }
