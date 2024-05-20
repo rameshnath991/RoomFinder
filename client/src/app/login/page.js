@@ -24,7 +24,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 
-const login = () => {
+const LogIn = () => {
 
   const formik = useFormik({
     initialValues: {
@@ -42,10 +42,10 @@ const login = () => {
 
       
       
-      <div className="flex justify-center  bg-green-100 p-5 h-auto ">
+      <div className="flex justify-end ">
 
       
-        <div className='border-2 border-black m-7 w-auto h-auto p-4 rounded-lg bg-slate-400  '>
+        <div className='border-2 border-black m-7 w-auto h-auto p-4 rounded-lg bg-slate-300  '>
       
       <div className="text-center text-3xl text-blue-900  ">   <b>LogIn Into R/F </b> </div> <br/>
     <form onSubmit={formik.handleSubmit}>
@@ -100,4 +100,4 @@ const login = () => {
   );
 };
 
-export default login
+export default LogIn

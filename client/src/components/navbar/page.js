@@ -1,12 +1,12 @@
 import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button} from "@nextui-org/react";
-
+import Image from "next/image";
 
 const NavBar=()=> {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
-    "Home",
+    "Dashbord",
     "Available Room or Flats",
     "Upload Your Room/Flats",
     "Contect us",
@@ -16,14 +16,14 @@ const NavBar=()=> {
   ];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} className="flex justify-between py-7 px-3" >
+    <Navbar onMenuOpenChange={setIsMenuOpen} className="flex justify-between py-2  px-3" >
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
         <NavbarBrand>
-          
+        <Image src="/logo.png" width={90} height={30} alt="logo"/>
           <p className="font-bold text-inherit">ROOMFINDER</p>
         </NavbarBrand>
       </NavbarContent>
