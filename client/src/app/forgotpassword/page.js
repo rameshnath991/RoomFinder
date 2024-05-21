@@ -16,11 +16,11 @@ const forgotPassword = () => {
     return (
         <div>
         <NavBar/>
-      <div className="flex text-center bg-blue-300 "> 
-         <form onSubmit={formik.handleSubmit} className="text-center">
+      <div className='border-2 border-black m-7 w-auto h-auto p-4 rounded-lg bg-slate-300'> 
+         <form onSubmit={formik.handleSubmit} >
   
   <label htmlFor="email">Email Address</label>
-    <Input
+    <Input justify-
     isClearable
     type="email"
     label="Email"

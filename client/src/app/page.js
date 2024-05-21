@@ -13,9 +13,9 @@ const Home = () => {
 
       <div className="bg-scroll bg-[url('/home1.png')] h-[630px] flex justify-center">
       
-      <h1 className='text-white justify-end py-52 px-16'> <b className='px-8 '>WELLCOME TO ROOMFINDER</b> <br/>
+      <h1 className='text-white justify-end py-52 px-16'> <b className=' text-3xl '>WELLCOME TO ROOMFINDER</b> <br/>
       <p> 
-        <i>Save Money Save Time Away From Broker</i>
+        <i className='px-16 py-4 text-green-400'>Save Money Save Time Away From Broker</i>
       </p> </h1> 
       <LogIn />
   </div>

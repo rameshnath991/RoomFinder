@@ -92,7 +92,7 @@ const LogIn = () => {
     </Button> </Link>
 
     <p> If you don't have an account,</p><Link href="/register"><Button color="primary" variant="light">
-        <b>Sign Up</b></Button></Link>instead.
+        <b>Register</b></Button></Link>instead.
   </form>
     </div>
     </div>
