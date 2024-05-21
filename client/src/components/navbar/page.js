@@ -58,14 +58,12 @@ const NavBar=()=> {
         </NavbarItem>
       </NavbarContent>
     
-      <NavbarMenu>
+      <NavbarMenu className="bg-blank ">
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+          <NavbarMenuItem   key={`${item}-${index}`}>
             <Link
-              color={
-                index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
-              }
-              className="w-full"
+               
+              className="w-full hover:bg-gray-400 text-white"
               href="#"
               size="lg"
             >
