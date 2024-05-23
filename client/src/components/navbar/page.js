@@ -10,6 +10,7 @@ const NavBar=()=> {
     "Available Room or Flats",
     "Upload Your Room/Flats",
     "Contect us",
+    "Log Out",
     "Sign up",
     "About us",
     
@@ -28,7 +29,7 @@ const NavBar=()=> {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent  className=" hidden sm:flex gap-4 " >
+      <NavbarContent  className=" hidden sm:flex gap-2 " >
         <NavbarItem className="hover:bg-gray-400  rounded-lg px-5 py-4  ">
           <Link color="foreground" href="#">
             Features
@@ -44,6 +45,18 @@ const NavBar=()=> {
             Integrations
           </Link>
         </NavbarItem>
+        <NavbarItem  className="hover:bg-gray-400  rounded-lg px-5 py-4  ">
+          <Link color="foreground" href="#" aria-current="page">
+            For Rent
+          </Link>
+        </NavbarItem>
+
+        <NavbarItem  className="hover:bg-gray-400  rounded-lg px-5 py-4  ">
+          <Link color="foreground" href="#" aria-current="page">
+            For Sale
+          </Link>
+        </NavbarItem>
+
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem  >
@@ -58,13 +71,17 @@ const NavBar=()=> {
         </NavbarItem>
       </NavbarContent>
     
-      <NavbarMenu className="bg-blank ">
+      <NavbarMenu className="bg-transparents ">
         {menuItems.map((item, index) => (
+          
           <NavbarMenuItem   key={`${item}-${index}`}>
-            <Link
+            <Link color={
+                  index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
+                              }
                
-              className="w-full hover:bg-gray-400 text-white"
-              href="#"
+              className="w-full hover:bg-black text-white  m-1"
+             
+              href="/register"
               size="lg"
             >
               {item}
