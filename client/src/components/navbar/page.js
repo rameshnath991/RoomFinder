@@ -2,6 +2,7 @@ import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button} from "@nextui-org/react";
 import Image from "next/image";
 
+
 const NavBar=()=> {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -67,6 +68,11 @@ const NavBar=()=> {
         <NavbarItem >
         <Link  href="/register"> <Button color="primary" href="#" variant="flat">
            <b><i> Sign Up </i></b>
+          </Button> </Link>
+        </NavbarItem>
+        <NavbarItem >
+        <Link  href="/register"> <Button color="primary" href="#" variant="flat">
+           <b><i> dark mode </i></b>
           </Button> </Link>
         </NavbarItem>
       </NavbarContent>

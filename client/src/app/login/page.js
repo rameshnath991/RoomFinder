@@ -4,7 +4,7 @@ import { Button, Input } from "@nextui-org/react";
 import Link from "next/link"
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import Image from "next/image";
+
 
  
 const Required=()=>{
