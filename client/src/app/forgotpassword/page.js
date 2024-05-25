@@ -16,7 +16,7 @@ const forgotPassword = () => {
     return (
         <div>
         <NavBar/>
-      <div className='border-2 border-black m-7 w-auto h-auto p-4 rounded-lg bg-slate-300'> 
+      <div className='border-2 border-black m-7 w-auto h-auto p-4 rounded-lg bg-slate-300  '> 
          <form onSubmit={formik.handleSubmit} >
   
   <label htmlFor="email">Email Address</label>
@@ -31,11 +31,11 @@ const forgotPassword = () => {
     placeholder="Enter your email/Mobile number"
     
     onClear={() =>{ formik.setFieldValue("email", ''), console.log("input cleared") }}
-    className="max-w-xs"
+    className="max-w-xs border-none "
     
   />
       {formik.errors.email}
-      <Button type="submit" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
+      <Button type="submit" className="my-1 bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
       Next
     </Button>
       </form>

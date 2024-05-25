@@ -70,11 +70,7 @@ const NavBar=()=> {
            <b><i> Sign Up </i></b>
           </Button> </Link>
         </NavbarItem>
-        <NavbarItem >
-        <Link  href="/register"> <Button color="primary" href="#" variant="flat">
-           <b><i> dark mode </i></b>
-          </Button> </Link>
-        </NavbarItem>
+      
       </NavbarContent>
     
       <NavbarMenu className="bg-transparents ">
