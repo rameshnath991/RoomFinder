@@ -55,6 +55,9 @@ const boxSlice = createSlice({
       state.right = actions.payload
       state.left = actions.payload
       state.mid = actions.payload
+      
+    },
+    shiftupdownPosition(state,actions) {
       state.top = actions.payload
       state.bottom = actions.payload
     },
@@ -62,5 +65,5 @@ const boxSlice = createSlice({
   },
 })
 
-export const { changeHeight, changeShape,changeWidth,changeBackgroundColor,shiftPosition } = boxSlice.actions
+export const { changeHeight, changeShape,changeWidth,changeBackgroundColor,shiftPosition,shiftupdownPosition } = boxSlice.actions
 export default boxSlice.reducer
