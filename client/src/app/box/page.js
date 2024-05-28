@@ -22,7 +22,7 @@ const Box = () => {
   }
   return (
     <div className='flex items-center flex-col p-32'>
-      <div className='m-2' style={{backgroundColor, height, width, borderRadius,right,left,mid,top,bottom, position:'relative' }}>
+      <div className=' m-2 ' style={{backgroundColor, height, width, borderRadius,right,left,mid,top,bottom, position:'relative' }}>
       </div>
       {generateArea()}
     <Button className='m-1' onClick={()=>dispatch(shiftPosition(-100)) }>Left</Button>
