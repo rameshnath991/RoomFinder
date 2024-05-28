@@ -1,6 +1,5 @@
-import { configureStore, Tuple, combineReducers  } from "@reduxjs/toolkit";
-import counterSlice from "../reducerSlices/boxSlice";
-import boxSlice from "../reducerSlices/boxSlice";
+import { configureStore, Tuple, combineReducers } from '@reduxjs/toolkit'
+import productSlice from '../reducerSlices/productSlice'
 import logger from 'redux-logger'
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
@@ -9,14 +8,15 @@ const persistConfig = {
     storage,
   }
   const rootReducer = combineReducers({ 
-    counter: counterSlice,
-    box: boxSlice,
-  })
-  const persistedReducer = persistReducer(persistConfig, rootReducer)  
+    product: productSlice,
 
-export const store = configureStore ({
-    reducer: persistedReducer
-    middleware: () => new Tuple( logger),
+  })
+
+  const persistedReducer = persistReducer(persistConfig, rootReducer)  
+export const store = configureStore({
+    reducer: persistedReducer,
+  middleware: () => new Tuple( logger),
 
 })
+
 export const persistor = persistStore(store)
