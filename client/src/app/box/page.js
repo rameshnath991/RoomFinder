@@ -1,12 +1,12 @@
 'use client'
 import { changeHeight, changeShape,changeWidth,changeBackgroundColor,shiftPosition,shiftupdownPosition } from '@/redux/reducerSlices/boxSlice'
 import { Button, Input } from '@nextui-org/react'
-import React, {useState} from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 const Box = () => {
   
-    const {height, width, backgroundColor, borderRadius,right,left,mid,top,bottom } = 
+    const { height, width, backgroundColor, borderRadius,right,left,mid,top,bottom } = 
     useSelector(state=>state.box)
     const dispatch = useDispatch()
 
