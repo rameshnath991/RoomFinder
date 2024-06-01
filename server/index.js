@@ -1,12 +1,23 @@
 const express = require('express')
+const dbConnect = require('./src/db/connection')
+dbConnect()
 const app = express()
-const port = 5000
+require('dotenv').config()
 
-app.get('/ra', (req, res) => {
-  res.send({
-    name:"ramesh",
-    rent: 5000,
-  })
+const mongoose= require('mongoose')
+const { Schema } = mongoose;
+
+const userSchema = new Schema({
+  name: String,
+  addr: String,
+  
+});
+const User = mongoose.model('User', userSchema);
+const port = process.env.PORT
+
+app.post('/users', (req, res) => {
+  User.create({name:"Ramesh", addr:"MNR"})
+
 })
 
 app.listen(port, () => {
