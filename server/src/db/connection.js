@@ -6,6 +6,7 @@ const dbConnect= async ()=>{
  }
 catch(err){
     console.log(err)
+    process.exit()
 }
 }
 module.exports = dbConnect

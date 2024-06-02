@@ -4,19 +4,33 @@ dbConnect()
 const app = express()
 require('dotenv').config()
 
+app.use(express.json())
+
 const mongoose= require('mongoose')
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-  name: String,
-  addr: String,
+  firstName: String,
+  midName: String,
+  lastName: String,
+  phoneNumber: String,
+  address: String,
+  password:String,
+  email:String,
+  
   
 });
 const User = mongoose.model('User', userSchema);
 const port = process.env.PORT
 
-app.post('/users', (req, res) => {
-  User.create({name:"Ramesh", addr:"MNR"})
+app.post('/register', (req, res) => {
+  User.create(req.body)
+  res.send("ok")
+
+})
+app.get('/register', async (req, res) => {
+  const data = await User.find()
+  res.send(data)
 
 })
 
