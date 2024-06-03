@@ -4,4 +4,5 @@ const initialState = {
     token :'',
     isLoggedIn: false,
 }
+
 const userSlice = createSlice

@@ -29,11 +29,11 @@ const RegisterSchema = Yup.object().shape({
     .max(50, 'Too Long!')
     .required(Required), 
   password: Yup.string()
-    .min(6, 'Too Short!')
+    .min(4, 'Too Short!')
     .max(50, 'Too Long!')
     .required(Required), 
    conformpassword: Yup.string()
-    .min(6, 'Too Short!')
+    .min(4, 'Too Short!')
     .max(50, 'Too Long!')
     .required(Required),
  
