@@ -1,12 +1,16 @@
 const express = require('express')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const jwt = require('jsonwebtoken');
+const cors = require('cors')
+
 
 const dbConnect = require('./src/db/connection')
 dbConnect()
 const app = express()
 require('dotenv').config()
 
+app.use(cors())
 app.use(express.json())
 
 const mongoose= require('mongoose')
@@ -60,7 +64,12 @@ req.body.password= hashPassword
     const isMatched = await bcrypt.compare(req.body.password, user.password);
     
     if(isMatched){
-      res.json({msg: "LogIn successful !!"})
+
+      const token = jwt.sign({ phoneNumber: req.body.phoneNumber }, '1353b15b50711cb8558776fb3c07c99848d680b2a2de8593523170a9429fdea7b49added448ab339a848fe7341017e36a3db09a1e78a7ba50ff37b7aa8790a22');
+
+
+
+      res.json({msg: "LogIn successful !!",token})
 
     }else {
       res.json({msg: "Invalid Password !!"})

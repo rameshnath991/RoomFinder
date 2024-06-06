@@ -49,17 +49,28 @@ const RegisterForm = () => {
       midName: '',
       address: '',
       lastName: '',
+      phoneNumber: '',
       email: '',
-      password: '',
-      conformpassword: ''
-  
+      password: ''
+   
     },
     validationSchema:RegisterSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      registerUser(values)
+
+      //alert(JSON.stringify(values, null, 2));
     },
   });
 
+  const registerUser = async(values)=>{
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(values)
+  };
+  const response = await fetch('http://localhost:7000/register', requestOptions);
+
+  }
 
   return (
     <div >
@@ -132,7 +143,24 @@ const RegisterForm = () => {
       }}
     />
         {formik.errors.address} 
-      <label htmlFor="email">Email Address/ Mobile Number</label>
+        <label htmlFor="phoneNumber">phoneNumber</label>
+       
+       <Input 
+       isClearable
+       label="phoneNumber"
+       variant="bordered"
+       onChange={formik.handleChange}
+       name="phoneNumber"
+       value={formik.values.phoneNumber}
+       placeholder="Enter your phoneNumber"
+       className="max-w-xs"
+       onClear={()=>{
+         formik.setFieldValue("phoneNumber", '')
+       }}
+     />
+         {formik.errors.firstName} 
+
+      <label htmlFor="email">Email Address</label>
       <Input
       isClearable
       type="email"
@@ -164,20 +192,6 @@ const RegisterForm = () => {
       
     />
        {formik.errors.password}
-       <label htmlFor="conformpassword">Conform Passwosd</label>
-    <Input
-      isClearable
-      type="password"
-      label="conformpassword"
-      variant="bordered"
-      onChange={formik.handleChange}
-      name="conformpassword"
-      value={formik.values.conformpassword}
-      placeholder="Enter your conform password"
-      onClear={() =>{ formik.setFieldValue("conformpassword", ''), console.log("input cleared")}}
-      className="max-w-xs"
-     
-    />
        {formik.errors.conformpassword}
     <Button type="submit" radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
       Register
