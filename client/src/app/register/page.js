@@ -47,8 +47,8 @@ const RegisterForm = () => {
     initialValues: {
       firstName: '',
       midName: '',
-      address: '',
       lastName: '',
+      address: '',
       phoneNumber: '',
       email: '',
       password: ''
@@ -126,8 +126,8 @@ const RegisterForm = () => {
       }}
     />
       {formik.errors.lastName}
+
       <label htmlFor="address"> Address </label>
-       
       <Input 
       isClearable
       label="address"
@@ -142,8 +142,8 @@ const RegisterForm = () => {
       }}
     />
         {formik.errors.address} 
-        <label htmlFor="phoneNumber">phoneNumber</label>
-       
+
+      <label htmlFor="phoneNumber">phoneNumber</label>
        <Input 
        isClearable
        label="phoneNumber"
@@ -157,7 +157,7 @@ const RegisterForm = () => {
          formik.setFieldValue("phoneNumber", '')
        }}
      />
-         {formik.errors.firstName} 
+         {formik.errors.phoneNumber} 
 
       <label htmlFor="email">Email Address</label>
       <Input
@@ -188,9 +188,9 @@ const RegisterForm = () => {
       placeholder="Enter your password"
       onClear={() =>{ formik.setFieldValue("password", ''), console.log("input cleared")}}
       className="max-w-xs"
-      
     />
        {formik.errors.password}
+
     <Button type="submit" radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
       Register
     </Button>
