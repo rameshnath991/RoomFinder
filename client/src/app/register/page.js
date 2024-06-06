@@ -54,7 +54,6 @@ const RegisterForm = () => {
       password: ''
    
     },
-    validationSchema:RegisterSchema,
     onSubmit: values => {
       registerUser(values)
 
@@ -71,12 +70,12 @@ const RegisterForm = () => {
   const response = await fetch('http://localhost:7000/register', requestOptions);
 
   }
-
+ 
   return (
     <div >
   
     <div className="flex justify-center  bg-green-200 p-5 ">
-    <div className='border-2 border-black m-7 w-72 p-4 rounded-lg bg-slate-400 '>
+    <div className='border-2 border-black m-7 w-72 p-4 rounded-lg bg-slate-400  '>
     
     <form onSubmit={formik.handleSubmit}>
       <label htmlFor="firstName">First Name</label>
@@ -192,7 +191,6 @@ const RegisterForm = () => {
       
     />
        {formik.errors.password}
-       {formik.errors.conformpassword}
     <Button type="submit" radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
       Register
     </Button>
