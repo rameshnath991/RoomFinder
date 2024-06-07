@@ -3,6 +3,7 @@ import {Button, Input } from "@nextui-org/react";
 import Link from "next/link";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import toast from "react-hot-toast";
  
 const Required=()=>{
   return(
@@ -16,28 +17,35 @@ const RegisterSchema = Yup.object().shape({
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required(Required),
+
   midName: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required(Required),
+
   lastName: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required(Required),
+
   address: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .required(Required), 
+    .required(Required),
+
+  phoneNumber: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required(Required),
+
+  email: Yup.string()
+  .email('Invalid email')
+  .required(Required),
+  
   password: Yup.string()
     .min(4, 'Too Short!')
     .max(50, 'Too Long!')
     .required(Required), 
-   conformpassword: Yup.string()
-    .min(4, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required(Required),
- 
-  email: Yup.string().email('Invalid email').required(Required),
 
 });
 
@@ -54,6 +62,7 @@ const RegisterForm = () => {
       password: ''
    
     },
+    validationSchema:RegisterSchema,
     onSubmit: values => {
       registerUser(values)
 
@@ -68,8 +77,50 @@ const RegisterForm = () => {
       body: JSON.stringify(values)
   };
   const response = await fetch('http://localhost:7000/register', requestOptions);
-  const data= await response.JSON()
-
+  const data= await response.json()
+  if(response.status =='200'){
+   
+   toast.custom((t) => (
+         <div
+           className={`${
+             t.visible ? 'animate-enter' : 'animate-leave'
+           } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+         >
+           <div className="flex-1 w-0 p-4">
+             <div className="flex items-start">
+               <div className="flex-shrink-0 pt-0.5">
+                 <img
+                   className="h-10 w-10 rounded-full"
+                   src= "/logo.png"
+                   alt=""
+                 />
+               </div>
+               <div className="ml-3 flex-1">
+                
+                 <p className="mt-1 text-sm text-gray-500">
+                   {data.msg}
+                 </p>
+                 <p className="text-sm font-medium text-gray-900">
+                   Now You can Login R/F
+                 </p>
+               </div>
+             </div>
+           </div>
+           <div className="flex border-l border-gray-200">
+             <button
+               onClick={() => toast.dismiss(t.id)}
+               className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+             >
+               Close
+             </button>
+           </div>
+         </div>
+       ))
+   
+       
+      }else{
+    toast.error(data.msg)
+  }
   }
  
   return (

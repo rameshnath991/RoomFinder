@@ -4,6 +4,7 @@ import { Button, Input } from "@nextui-org/react";
 import Link from "next/link"
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import toast from "react-hot-toast";
 
 
  
@@ -13,13 +14,17 @@ const Required=()=>{
  <h1>  *It's required*!!!  </h1> 
   </div>
 )}
-const SignupSchema = Yup.object().shape({
-  
+const LoginSchema = Yup.object().shape({
+ 
+     phoneNumber: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required(Required),
+
     password: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required(Required),    
-  email: Yup.string().email('Invalid email').required(Required),
 
 });
 
@@ -31,6 +36,7 @@ const LogIn = () => {
       phoneNumber: '',
       password: ''
     },
+    validationSchema:LoginSchema,
     onSubmit: values => {
       loginUser(values)
       //alert(JSON.stringify(values, null, 2));
@@ -40,13 +46,18 @@ const LogIn = () => {
   const loginUser = async(values)=>{
     const requestOptions = {
       method: 'POST',
-
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(values)
   };
   const response = await fetch('http://localhost:7000/login', requestOptions);
-
+  const data= await response.json()
+  if(response.status =='200'){
+    toast.success(data.msg)
+      }else{
+    toast.error(data.msg)
   }
+  }
+ 
 
   return ( 
 
