@@ -10,6 +10,31 @@
 "email":"ramesh12@gmail.com"
 }
 
+app.post('/login', async(req, res) => {
+  console.log(req.body)
+  const user = await User.findOne({phoneNumber: req.body.phoneNumber })
+
+  if(user){
+    const isMatched = await bcrypt.compare(req.body.password, user.password);
+    
+    if(isMatched){
+      const token = jwt.sign({ phoneNumber: req.body.phoneNumber }, process.env.SECRET_KEY);
+      res.json({msg: "LogIn successful !!",token, user})
+
+    }else {
+      res.status(401).json({msg: "Invalid Password !!"})
+    }
+
+  }else{
+    res.status(401).json({msg: "Phone number not register!!"})
+  }
+  
+   await User.create(req.body)
+   return res.json({msg: "user loggedIn"})
+
+  })
+
+
 
  Hello, I'm Ramesh Nath. In this repository i will be build a Complete 'Room Finder' Web application.Using Node.js, Express.js,  MongoDB, React.js, Next.js, Redux.js, & Tailwind CSS. So are you interested at this project let's connect and explore somethings new. Thanks
 ## Purpose:
