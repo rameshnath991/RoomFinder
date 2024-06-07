@@ -68,6 +68,7 @@ const RegisterForm = () => {
       body: JSON.stringify(values)
   };
   const response = await fetch('http://localhost:7000/register', requestOptions);
+  const data= await response.JSON()
 
   }
  

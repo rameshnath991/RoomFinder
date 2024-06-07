@@ -28,44 +28,58 @@ const LogIn = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: '',
+      phoneNumber: '',
       password: ''
     },
-    validationSchema:SignupSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      loginUser(values)
+      //alert(JSON.stringify(values, null, 2));
     },
   });
+
+  const loginUser = async(values)=>{
+    const requestOptions = {
+      method: 'POST',
+
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(values)
+  };
+  const response = await fetch('http://localhost:7000/login', requestOptions);
+
+  }
+
   return ( 
 
     <div>
 
       
       
-      <div className="flex justify-end ">
+      <div className="flex justify-center ">
 
       
         <div className='border-2 border-black m-7 w-auto h-auto p-4 rounded-lg bg-slate-300  '>
+          
       
       <div className="text-center text-3xl text-blue-900  ">   <b>LogIn Into R/F </b> </div> <br/>
     <form onSubmit={formik.handleSubmit}>
 
-    <label htmlFor="email">Email Address</label>
+    <label htmlFor="phoneNumber">Mobile Number </label>
       <Input
       isClearable
-      type="email"
-      label="Email"
+      type="phoneNumber"
+      label="PhoneNumber"
       variant="bordered"
       onChange={formik.handleChange}
-      name="email"
-      value={formik.values.email}
-      placeholder="Enter your email/Mobile number"
+      name="phoneNumber"
+      value={formik.values.phoneNumber}
+      placeholder="Enter your phoneNumber"
       
-      onClear={() =>{ formik.setFieldValue("email", ''), console.log("input cleared") }}
+      onClear={() =>{ formik.setFieldValue("phoneNumber", ''), console.log("input cleared") }}
       className="max-w-xs"
       
     />
-        {formik.errors.email}
+      {formik.errors.phoneNumber}
+
         <label htmlFor="password">Password</label>
     <Input
       isClearable
