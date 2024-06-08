@@ -9,7 +9,7 @@ const cors = require('cors')
 dbConnect()
 const app = express()
 app.use(cors())
-require('dotenv').config()
+require('dotenv').config();
 app.use(express.json())
 const mongoose= require('mongoose')
 const { Schema } = mongoose;
