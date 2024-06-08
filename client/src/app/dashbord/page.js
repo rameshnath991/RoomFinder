@@ -1,20 +1,21 @@
 'use client'
-import React from 'react'
 import NavBar from '@/components/navbar/page'
-import SideBar from '@/components/sidebar/page'
+// import SideBar from '@/components/sidebar/page'
+import React from 'react'
 import MainSection from './mainSection'
 import LoginSection from './loginSection'
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 
-const Dashbord  = () => {
-  const value = useSelector(state=> state.counter.value)
+
+const page = () => {
+  // const value = useSelector(state=> state.counter.value)
 
   return (
     <div>
         <NavBar/>
         <div className='flex'>
-            <SideBar/>
-            {value}
+            
+            {/* {value} */}
             <LoginSection/>
             <MainSection/>
         </div>
@@ -23,4 +24,4 @@ const Dashbord  = () => {
   )
 }
 
-export default Dashbord 
+export default page

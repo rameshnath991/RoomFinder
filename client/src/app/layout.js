@@ -3,6 +3,7 @@ import "./globals.css";
 import {NextUIProvider} from "@nextui-org/react";
 import ReduxProvider from "@/redux/ReduxProvider";
 import { Toaster } from "react-hot-toast";
+// import {ThemeProvider as NextThemesProvider} from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +18,9 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
       <NextUIProvider>
       <ReduxProvider>
+      {/* <NextThemesProvider attribute="class" defaultTheme="dark"> */}
       {children}
+      {/* </NextThemesProvider> */}
       <Toaster
   position="top-center"
   reverseOrder={false}

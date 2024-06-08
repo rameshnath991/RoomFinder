@@ -63,6 +63,11 @@ You can view profile by clicking on View Profile link for a user.
 ### Edit Profile View - 
 As an admin or as the user, you will be able to edit your respective profile and password in this form.
 
+## Technologies Used
+
+- Frontend: React.js, Next UI, Redux
+- Backend: Node.js, Express.js
+- Database: MongoDB
 
 ## API Documentation
 
@@ -75,13 +80,22 @@ git clone https://github.com/rameshnath991/RoomFinder.git
 ```
 
 ###To run the application:
-
-In client:-
-ProjectFirst\RoomFinder\client> npm run dev
-
-In server:-
-ProjectFirst\RoomFinder\server> npm run dev
-
+git clone https://github.com/rameshnath991/RoomFinder.git
+```
+Terminal 1: Setting Up Backend 
+```sh
+cd RoomFinder
+cd server
+npm install
+npm run dev
+```
+Terminal 2: Setting Up Backend 
+```sh
+cd RoomFinder
+cd client
+npm install
+npm run dev
+```
 The application runs on **localhost:3000** on your local machine.
 The server runs on **localhost:7000** on your local machine.
 

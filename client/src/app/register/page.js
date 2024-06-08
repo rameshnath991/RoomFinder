@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
  
 const Required=()=>{
   return(
@@ -50,6 +51,7 @@ const RegisterSchema = Yup.object().shape({
 });
 
 const RegisterForm = () => {
+  const router = useRouter()
 
   const formik = useFormik({
     initialValues: {
@@ -101,7 +103,7 @@ const RegisterForm = () => {
                    {data.msg}
                  </p>
                  <p className="text-sm font-medium text-gray-900">
-                   Now You can Login R/F
+                   Now You can Login Here!!
                  </p>
                </div>
              </div>
@@ -116,7 +118,7 @@ const RegisterForm = () => {
            </div>
          </div>
        ))
-   
+       router.push('/login')
        
       }else{
     toast.error(data.msg)
