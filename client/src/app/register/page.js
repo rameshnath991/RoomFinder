@@ -1,5 +1,5 @@
 'use client'
-import {Button, Input } from "@nextui-org/react";
+import {Button, Input, Radio, RadioGroup } from "@nextui-org/react";
 import Link from "next/link";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -61,7 +61,8 @@ const RegisterForm = () => {
       address: '',
       phoneNumber: '',
       email: '',
-      password: ''
+      password: '',
+      role: ''
    
     },
     validationSchema:RegisterSchema,
@@ -244,6 +245,15 @@ const RegisterForm = () => {
       className="max-w-xs"
     />
        {formik.errors.password}
+       <RadioGroup
+      label="Select role"
+      name="role"
+      onChange={formik.handleChange}
+      value={formik.values.role}
+    >
+      <Radio value="user">User</Radio>
+      <Radio value="admin">Admin</Radio>
+    </RadioGroup>
 
     <Button type="submit" radius="full" className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
       Register

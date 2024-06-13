@@ -1,105 +1,62 @@
 'use client'
-
 import React from "react";
-import { HiHome } from "react-icons/hi2";
-import { FaSearch } from "react-icons/fa";
-import { GrNotification } from "react-icons/gr";
-import { FaRegMessage } from "react-icons/fa6";
-import { BiMessageSquareMinus } from "react-icons/bi";
-import { LiaListSolid } from "react-icons/lia";
-import { MdOutlineGroups2, MdOutlineWorkspacePremium } from "react-icons/md";
-// import {  } from "react-icons/md";
-import { IoPersonOutline } from "react-icons/io5";
-import { CiCircleMore } from "react-icons/ci";
+import {Listbox, ListboxItem} from "@nextui-org/react";
+import {cn} from "@nextui-org/react";
+import { GenIcon } from "react-icons";
+import { CgProfile } from "react-icons/cg";
+import sideBarItems from '@/config/sideBarItems.json'
+import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 
-const Sidebar = () => {
-  return (
-    <div className="w-[20%] border border-red-300">
-      <div>
-        <div>
-          <img
-            className="w-10 h-10 ml-3"
-            src="https://img.freepik.com/free-vector/twitter-new-2023-x-logo-white-background-vector_1017-45422.jpg?w=1380&t=st=1715445186~exp=1715445786~hmac=b6a95d69e7e633b247bd19de76fe080503b174035e6229c007e9ae4b58788813"
-          />
-        </div>
-        <div className="my-4 ">
-          <div className="flex place-items-center my-4 px-4 hover:bg-gray-400 rounded-lg ">
-            <div>
-              <HiHome size={25} />
-            </div>
-            <h1 className="font-bold ml-2 text-lg text-black"> Home </h1>
-          </div>
-          <div className="flex place-items-center my-4 px-4 hover:bg-gray-400 rounded-lg ">
-            <div>
-              <FaSearch size={25} />
-            </div>
-            <h1 className="font-bold ml-2 text-lg text-gray-600"> Explore </h1>
-          </div>
-          <div className="flex place-items-center my-4 px-4 hover:bg-gray-400 rounded-lg ">
-            <div>
-              <GrNotification size={25} />
-            </div>
-            <h1 className="font-bold ml-2 text-lg  text-gray-600">
-              {" "}
-              Notifications{" "}
-            </h1>
-          </div>
-          <div className="flex place-items-center my-4 px-4 hover:bg-gray-400 rounded-lg ">
-            <div>
-              <FaRegMessage size={25} />
-            </div>
-            <h1 className="font-bold ml-2 text-lg  text-gray-600">
-              {" "}
-              Messages{" "}
-            </h1>
-          </div>
-          <div className="flex place-items-center my-4 px-4 hover:bg-gray-400 rounded-lg ">
-            <div>
-              <BiMessageSquareMinus size={25} />
-            </div>
-            <h1 className="font-bold ml-2 text-lg  text-gray-600"> Grok </h1>
-          </div>
-          <div className="flex place-items-center my-4 px-4 hover:bg-gray-400 rounded-lg ">
-            <div>
-              <LiaListSolid size={25} />
-            </div>
-            <h1 className="font-bold ml-2 text-lg  text-gray-600"> Lists </h1>
-          </div>
-          <div className="flex place-items-center my-4 px-4 hover:bg-gray-400 rounded-lg ">
-            <div>
-              <MdOutlineGroups2 size={25} />
-            </div>
-            <h1 className="font-bold ml-2 text-lg  text-gray-600">
-              {" "}
-              Communities{" "}
-            </h1>
-          </div>
-          <div className="flex place-items-center my-4 px-4 hover:bg-gray-400 rounded-lg ">
-            <div>
-              <MdOutlineWorkspacePremium size={25} />
-            </div>
-            <h1 className="font-bold ml-2 text-lg  text-gray-600"> Premium </h1>
-          </div>
-          <div className="flex place-items-center my-4 px-4 hover:bg-gray-400 rounded-lg ">
-            <div>
-              <IoPersonOutline size={25} />
-            </div>
-            <h1 className="font-bold ml-2 text-lg text-gray-600"> Profile </h1>
-          </div>
-          <div className="flex place-items-center my-4 px-4 hover:bg-gray-400 rounded-lg ">
-            <div>
-              <CiCircleMore size={25} />
-            </div>
-            <h1 className="font-bold ml-2 text-lg text-gray-600"> more </h1>
-          </div>
 
-          <button className="bg-blue-500 text-white text-center  w-60 rounded-lg ">
-            Post
-          </button>
-        </div>
-      </div>
+export const ItemCounter = ({number}) => (
+    <div className="flex items-center gap-1 text-default-400">
+      <span className="text-small">{number}</span>
+        <GenIcon/>
     </div>
   );
-};
+  
 
-export default Sidebar;
+
+export const IconWrapper = ({children, className}) => (
+    <div className={cn(className, "flex items-center rounded-small justify-center w-7 h-7")}>
+      {children}
+    </div>
+  );
+export default function SideBar() {
+const {userDetails
+}=  useSelector(state=>state.user)
+  console.log(sideBarItems)
+  const router = useRouter()
+  return (
+    <Listbox
+      aria-label="User Menu"
+      onAction={(key) => router.push(key)}
+    
+      className={`p-0 gap-0 divide-y divide-default-300/50 dark:divide-default-100/80 ${userDetails.role=='admin' ?'bg-[#034CAD]': 'bg-green-500' }  max-w-[600px]  text-white overflow-visible shadow-small rounded-medium m-2`}
+      itemClasses={{
+        base: "px-3 first:rounded-t-medium last:rounded-b-medium rounded-none gap-3 h-12 data-[hover=true]:bg-default-100/80",
+      }}
+    >
+      {
+     sideBarItems[userDetails?.role] && sideBarItems[userDetails?.role].map((item)=>{
+        return (
+          <ListboxItem
+          key={item.link}
+        
+          startContent={
+            <IconWrapper className="bg-success/10 text-success bg-white" >
+             <CgProfile/>
+            </IconWrapper>
+          }
+        >
+       {item.name}
+        </ListboxItem>
+        )
+      })
+      }
+   
+     
+    </Listbox>
+  );
+}

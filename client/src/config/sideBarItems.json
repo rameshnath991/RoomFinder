@@ -1,0 +1,12 @@
+{
+    "admin": [
+        
+        { "id":1, "name": "Profile", "link": "/profile"}
+
+    ],
+    "user": [
+        {"id":1, "name": "Dashboard", "link": "/dashboard"},
+        {"id":2, "name": "UploadRoom", "link": "/uploadRoom"},
+        {"id":3, "name": "Profile", "link": "/profile"}
+    ]
+}

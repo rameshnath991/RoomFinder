@@ -6,6 +6,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { setLoginDetails } from "@/redux/reducerSlices/userSlice";
+import { useDispatch } from "react-redux";
 
 const Required=()=>{
   return(
@@ -29,6 +31,8 @@ const LoginSchema = Yup.object().shape({
 
 
 const LogIn = () => {
+  const dispatch =useDispatch()
+
   const router = useRouter()
 
   const formik = useFormik({
@@ -87,8 +91,13 @@ const LogIn = () => {
         </div>
       </div>
     ))
-      router.push('/dashbord')
-      }else{
+   dispatch(setLoginDetails(data))
+    if(data.user.role == 'user'){
+      router.push('/dashboard')
+    }else{
+      router.push('/adminDashboard')
+    }
+        }else{
     toast.error(data.msg)
   }
   }
@@ -126,7 +135,7 @@ const LogIn = () => {
     />
       {formik.errors.phoneNumber}
 
-        <label htmlFor="password">Password</label>
+    <label htmlFor="password">Password</label>
     <Input
       isClearable
       type="password"

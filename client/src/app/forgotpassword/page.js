@@ -1,40 +1,46 @@
 'use client'
-import NavBar from "@/components/navbar/page"
 import { Button, Input } from "@nextui-org/react";
 import Link from "next/link"
 import { useFormik } from 'formik';
- 
+import { Image } from '@nextui-org/react'
+
 
 const forgotPassword = () => {
 
     const formik = useFormik({
         initialValues: {
-          email: '',
+          phoneNumber: '',
         
         },
     });
     return (
         <div>
-        <NavBar/>
+        <div className="flex flex-row items-justify"> 
+      <Image src="/logo.png" width={70 } height={70} className=''/>
+       <Link href= "/login"> <Button color="primary" variant="light"><b>Login </b></Button></Link>
+       <Link href="/register"><Button color="primary" variant="light">
+       <b>Register</b></Button></Link>
+        </div>
       <div className='border-2 border-black m-7 w-auto h-auto p-4 rounded-lg bg-slate-300  '> 
          <form onSubmit={formik.handleSubmit} >
   
-  <label htmlFor="email">Email Address</label>
-    <Input justify-
-    isClearable
-    type="email"
-    label="Email"
-    variant="bordered"
-    onChange={formik.handleChange}
-    name="email"
-    value={formik.values.email}
-    placeholder="Enter your email/Mobile number"
+         <label htmlFor="phoneNumber">Mobile Number </label>
+      <Input
+      isClearable
+      type="phoneNumber"
+      label="PhoneNumber"
+      variant="bordered"
+      onChange={formik.handleChange}
+      name="phoneNumber"
+      value={formik.values.phoneNumber}
+      placeholder="Enter your phoneNumber"
+      
+      onClear={() =>{ formik.setFieldValue("phoneNumber", ''), console.log("input cleared") }}
+      className="max-w-xs"
+      
+    />
+      {formik.errors.phoneNumber}
     
-    onClear={() =>{ formik.setFieldValue("email", ''), console.log("input cleared") }}
-    className="max-w-xs border-none "
-    
-  />
-      {formik.errors.email}
       <Button type="submit" className="my-1 bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
       Next
     </Button>
